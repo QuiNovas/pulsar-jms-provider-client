@@ -1,4 +1,4 @@
-# pulsar-jms-provider-client
+# pulsar-jms-provider-examples
 
 Example to send and receiver messages to pulsar through pulsar-jms-provider api
 
@@ -8,7 +8,7 @@ Example to send and receiver messages to pulsar through pulsar-jms-provider api
 
 Login to above server with ppk file using putty. OR ssh/with git bash ssh -i "path_of_.pem_file/shan_jms_pulsar.pem" ubuntu@ec2-52-91-109-0.compute-1.amazonaws.com
 
-cd /home/ubuntu/pulsar-jms-provider-client-1.0-SNAPSHOT
+cd /home/ubuntu/pulsar-jms-provider-examples-1.0-SNAPSHOT
 
 ./startApp.sh
 
@@ -70,7 +70,7 @@ Press Enter
 
 bin/pulsar standalone
 
-#Running pulsar-jms-provider-client using source code/IDE
+#Running pulsar-jms-provider-examples using source code/IDE
 
 Setup config file resources/application.properties
 
@@ -84,7 +84,7 @@ Right click on PulsarJMSClientProvider and click on run.
 
 We can see the console for the send and receive message
 
-#Creating pulsar-jms-provider-client execution build using IDE and Running on ubuntu
+#Creating pulsar-jms-provider-examples execution build using IDE and Running on ubuntu
 
 Create a build using IDE, clean,compile and install
 
@@ -92,11 +92,11 @@ Copy *bin.zip from project target folder and paste to ubuntu server where pulsar
 
 Unzip *bin.zip
 
-Go to unzipped folder and copy pulsar-jms-provider-client-1.0-SNAPSHOT.jar from lib
+Go to unzipped folder and copy pulsar-jms-provider-examples-1.0-SNAPSHOT.jar from lib
 
 Modify below file for the app home vi startApp.sh
 
-APP_HOME=/home/pulsar-jms-provider-client-1.0-SNAPSHOT
+APP_HOME=/home/pulsar-jms-provider-examples-1.0-SNAPSHOT
 
 Save and exit 8.Change file permission chmod 777 startApp.sh
 
