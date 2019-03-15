@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAIN_CLASS=com.echostreams.pulsar.jms.client.client.PulsarJMSClientProvider
+MAIN_CLASS=com.echostreams.pulsar.jms.client.PulsarJMSClientProvider
 MAIN_JAR=pulsar-jms-provider-client-1.0-SNAPSHOT.jar
 
 APP_HOME=/home/pulsar-jms-provider-client-1.0-SNAPSHOT

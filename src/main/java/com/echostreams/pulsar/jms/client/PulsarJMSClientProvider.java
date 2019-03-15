@@ -1,6 +1,6 @@
-package com.echostreams.pulsar.jms.client.client;
+package com.echostreams.pulsar.jms.client;
 
-import com.echostreams.pulsar.jms.client.config.PulsarConfig;
+import com.echostreams.pulsar.jms.config.PulsarConfig;
 import org.apache.pulsar.client.api.*;
 import org.apache.pulsar.client.impl.ConsumerBuilderImpl;
 import org.apache.pulsar.client.impl.ProducerBuilderImpl;
