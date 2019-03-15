@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MAIN_CLASS=com.echostreams.pulsar.jms.client.PulsarJMSClientProvider
-MAIN_JAR=pulsar-jms-provider-client-1.0-SNAPSHOT.jar
+MAIN_CLASS=com.echostreams.pulsar.jms.example.PulsarJMSClientProvider
+MAIN_JAR=pulsar-jms-provider-examples-1.0-SNAPSHOT.jar
 
-APP_HOME=/home/pulsar-jms-provider-client-1.0-SNAPSHOT
+APP_HOME=/home/pulsar-jms-provider-examples-1.0-SNAPSHOT
 
 # Setup the JVM
 if [ "x$JAVA_HOME" != "x" ]; then

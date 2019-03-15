@@ -24,7 +24,7 @@
             <unpack>false</unpack>
             <scope>runtime</scope>
             <excludes>
-                <exclude>pulsar-jms-provider-client*</exclude>
+                <exclude>pulsar-jms-provider-examples*</exclude>
             </excludes>
         </dependencySet>
         <dependencySet>
@@ -32,7 +32,7 @@
             <unpack>false</unpack>
             <scope>runtime</scope>
             <includes>
-                <include>pulsar-jms-provider-client*</include>
+                <include>pulsar-jms-provider-examples*</include>
             </includes>
         </dependencySet>
     </dependencySets>

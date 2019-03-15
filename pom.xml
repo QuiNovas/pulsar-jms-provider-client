@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.echostreams</groupId>
-    <artifactId>pulsar-jms-provider-client</artifactId>
+    <artifactId>pulsar-jms-provider-examples</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -28,9 +28,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/QuiNovas/pulsar-jms-provider-client</url>
-        <connection>scm:git:git://github.com/QuiNovas/pulsar-jms-provider-client.git</connection>
-        <developerConnection>scm:git:git@github.com:QuiNovas/pulsar-jms-provider-client.git</developerConnection>
+        <url>https://github.com/QuiNovas/pulsar-jms-provider-examples</url>
+        <connection>scm:git:git://github.com/QuiNovas/pulsar-jms-provider-examples.git</connection>
+        <developerConnection>scm:git:git@github.com:QuiNovas/pulsar-jms-provider-examples.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -103,7 +103,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.echostreams.pulsar.jms.client.PulsarJMSClientProvider</mainClass>
+                            <mainClass>com.echostreams.pulsar.jms.example.PulsarJMSClientProvider</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>application.properties</Class-Path>
