@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.echostreams</groupId>
+    <artifactId>pulsar-jms-provider-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Access PulsarJMSProvider API</name>
+    <description>Example to send and receiver messages to pulsar through pulsar-jms-provider api
+    </description>
+    <url>https://pulsar.apache.org/</url>
+
+    <licenses>
+
+    </licenses>
+    <!-- TO DO - Need input here -->
+    <developers>
+        <developer>
+            <email>info@company.com</email>
+            <name>Team Company</name>
+            <organization>Company</organization>
+            <organizationUrl>http://www.company.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/QuiNovas/pulsar-jms-provider-client</url>
+        <connection>scm:git:git://github.com/QuiNovas/pulsar-jms-provider-client.git</connection>
+        <developerConnection>scm:git:git@github.com:QuiNovas/pulsar-jms-provider-client.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <organization>
+        <name>Company</name>
+        <url>http://www.company.com</url>
+    </organization>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <jms.spec.version>1.1</jms.spec.version>
+        <pulsar.jms.provider.version>1.0-SNAPSHOT</pulsar.jms.provider.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <junit.version>4.12</junit.version>
+    </properties>
+
+    <dependencies>
+
+        
+
+        <dependency>
+            <groupId>com.echostreams</groupId>
+            <artifactId>pulsar-jms-provider</artifactId>
+            <version>${pulsar.jms.provider.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.echostreams.pulsar.jms.client.PulsarJMSClientProvider</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>application.properties</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- app build as zip -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
