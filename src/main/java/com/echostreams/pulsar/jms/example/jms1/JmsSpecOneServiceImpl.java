@@ -38,43 +38,49 @@ public class JmsSpecOneServiceImpl implements JmsSpecOneService {
     public void produceAndConsumeTextTest() throws JMSException {
         // Change default Pulsar client config value to custom value
         ClientBuilder clientBuilder = PulsarClient.builder();
-        clientBuilder.serviceUrl(PulsarConfig.SERVICE_URL);
-        PulsarConfig.changeDefaultClientConfig(clientBuilder);
+        try {
 
-        con = factory.createConnection();
-        session = con.createSession();
-        topic = session.createTopic("test");
 
-        // Changing the default value of Producer config
-        PulsarConnection pulsarConnection = (PulsarConnection) con;
-        ProducerBuilderImpl producerBuilderImpl = new ProducerBuilderImpl((PulsarClientImpl) pulsarConnection.getClient(), Schema.BYTES);
-        producerBuilderImpl.producerName("test-producer").compressionType(CompressionType.LZ4);
-        PulsarConfig.changeDefaultProducerConfig(producerBuilderImpl);
+            clientBuilder.serviceUrl(PulsarConfig.SERVICE_URL);
+            PulsarConfig.changeDefaultClientConfig(clientBuilder);
 
-        MessageProducer producer = session.createProducer(topic);
+            con = factory.createConnection();
+            session = con.createSession();
+            topic = session.createTopic("test");
 
-        TextMessage text = session.createTextMessage();
-        text.setText("this is a textmsg test.");
+            // Changing the default value of Producer config
+            PulsarConnection pulsarConnection = (PulsarConnection) con;
+            ProducerBuilderImpl producerBuilderImpl = new ProducerBuilderImpl((PulsarClientImpl) pulsarConnection.getClient(), Schema.BYTES);
+            producerBuilderImpl.producerName("test-producer").compressionType(CompressionType.LZ4);
+            PulsarConfig.changeDefaultProducerConfig(producerBuilderImpl);
 
-        producer.send(text);
+            MessageProducer producer = session.createProducer(topic);
 
-        // Changing the default value of Consumer config
-        ConsumerBuilderImpl consumerBuilder = new ConsumerBuilderImpl((PulsarClientImpl) pulsarConnection.getClient(), Schema.BYTES);
-        consumerBuilder.consumerName("test-consumer")
-                .subscriptionType(SubscriptionType.Shared)
-                .subscriptionName("test-subcription");
-        PulsarConfig.changeDefaultConsumerConfig(consumerBuilder);
+            TextMessage text = session.createTextMessage();
+            text.setText("this is a textmsg test.");
 
-        MessageConsumer consumer = session.createConsumer(topic);
-        TextMessage textMessage = (TextMessage) consumer.receive();
+            producer.send(text);
 
-        // Extract the message as a printable string and then log
-        LOGGER.info("Received message='{}' with msg-id={}", textMessage.getText(), textMessage.getJMSMessageID());
+            // Changing the default value of Consumer config
+            ConsumerBuilderImpl consumerBuilder = new ConsumerBuilderImpl((PulsarClientImpl) pulsarConnection.getClient(), Schema.BYTES);
+            consumerBuilder.consumerName("test-consumer")
+                    .subscriptionType(SubscriptionType.Shared)
+                    .subscriptionName("test-subcription");
+            PulsarConfig.changeDefaultConsumerConfig(consumerBuilder);
 
-        con.close();
-        PulsarConfig.clientConfig = null;
-        PulsarConfig.producerConfig = null;
-        PulsarConfig.consumerConfig = null;
+            MessageConsumer consumer = session.createConsumer(topic);
+            TextMessage textMessage = (TextMessage) consumer.receive();
+
+            // Extract the message as a printable string and then log
+            LOGGER.info("Received message='{}' with msg-id={}", textMessage.getText(), textMessage.getJMSMessageID());
+        } catch (Exception e) {
+            LOGGER.error("Exception while sending and receiving text message ", e);
+        } finally {
+            con.close();
+            PulsarConfig.clientConfig = null;
+            PulsarConfig.producerConfig = null;
+            PulsarConfig.consumerConfig = null;
+        }
     }
 
     /*

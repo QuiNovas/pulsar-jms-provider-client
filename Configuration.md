@@ -1,8 +1,8 @@
 # ======== Steps to Configure Without Any Auth, Token, JNDI, TLS, Athenz
 
-## No Authentication
+## ================= Config resources/application.properties ================= ##
 
-1. # application.properties
+## No Authentication
     Go to resources/application.properties and set the following properites :-
 
         #Leave empty-no auth, TLS-tls auth, ATHENZ-athenz auth, TOKEN-token based auth
@@ -11,7 +11,6 @@
 
         #use "pulsar+ssl://" in serviceUrl to enable TLS
         pulsar.serviceUrl=pulsar://IP_ADDRESS:6650
-
 
 ## Configuring Token
 
@@ -56,6 +55,7 @@
 Applications use a JNDI InitialContext, which obtained from an InitialContextFactory, to look up JMS objects
 such as ConnectionFactory. The pulsar-jms-provider  provides an implementation of the InitialContextFactory
 in class *com.echostreams.pulsar.jms.jndi.PulsarInitialContextFactory*.
+
 This may be configured and used in three main ways:
 
 1.  # Via jndi.properties file on the Java Classpath.

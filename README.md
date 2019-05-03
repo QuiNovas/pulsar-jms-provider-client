@@ -1,20 +1,24 @@
 # pulsar-jms-provider-examples : This app is used to send and receiver message from pulsar using pulsar-jms-provider api
 
-Example to send and receiver messages to pulsar through pulsar-jms-provider api
+Steps to setup java app to send and receiver messages to pulsar through pulsar-jms-provider api
 
-# 1. ======= Initial DEMO: Already Deployed executable build on aws ubuntu server 52.91.109.0 with user ubuntu =====
+# 1. ======= Create a executable build =====
 
-*Build is already deployed and all config is set to access pulsar without auth
+Clone the repo
 
-Login to above server with ppk file using putty. OR ssh/with git bash ssh -i "path_of_.pem_file/shan_jms_pulsar.pem" ubuntu@ec2-52-91-109-0.compute-1.amazonaws.com
+Make sure you have maven installed
 
-cd /home/ubuntu/pulsar-jms-provider-examples-1.0-SNAPSHOT
+Go to project directory and Run the maven build:
 
-./startApp.sh
+    mvn install
 
-Press enter
+It will produce a JAR file and pulsar-jms-provider-examples-XXX-bin.zip in the target directory, and run all tests with the most recently-released build of Clojure.
 
-# 2. ======= Steps to setup from scratch on ubuntu server ========
+OR
+Can also build using IDE
+
+
+# 2. ======= Steps to setup pulsar on ubuntu server ========
 
 # Install Java8 and Pulsar, here steps to do on ubuntu server
 
@@ -70,6 +74,8 @@ Press Enter
 
 bin/pulsar standalone
 
+# 3. ======= Steps to setup application =======
+
 # Deploy the executable build
 
 Copy pulsar-jms-provider-examples-XXX-bin.zip from project target folder and paste to ubuntu server where pulsar is installed.
@@ -79,9 +85,10 @@ Unzip *bin.zip
 Go to unzipped folder and copy pulsar-jms-provider-examples-XXX.jar from lib to pulsar-jms-provider-examples-XXX
 
     cp ./lib/pulsar-jms-provider-examples-XXX.jar .
+
   press Enter
 
-# Refer Configuration.md in project pulsar-jms-provider-examples
+# Config application.properties by referring Configuration.md file in project pulsar-jms-provider-examples
 
 # Run the app on ubuntu
 
@@ -101,19 +108,3 @@ Change file permission
 Run
 
     ./startApp.sh
-
-# 3 ======= Refer Configuration.md in project pulsar-jms-provider-examples for Without Any Auth, Token, JNDI, TLS, Athenz, basic property
-
-# Creating pulsar-jms-provider-examples execution build using IDE and Running on ubuntu
-
-Create a build using IDE, clean,compile and install and Deploy to ubuntu. Steps is mentioned above
-
-# Running pulsar-jms-provider-examples using source code/IDE
-
-    Refer Configuration.md in project pulsar-jms-provider-examples
-
-   As of now file PulsarJMSClientProvider.java has main method to execute and connect to pulsar. Default topic "test" will be created with default message "this is a test."
-
-   Right click on PulsarJMSClientProvider and click on run.
-
-   We can see the console for the send and receive message

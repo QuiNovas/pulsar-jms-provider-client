@@ -17,23 +17,20 @@ import java.io.IOException;
 public class PulsarJMSClientProvider {
     private static final Logger LOGGER = LoggerFactory.getLogger(PulsarJMSClientProvider.class);
 
-    private static String SERVICE_URL = "pulsar://35.174.9.240:6650";
-
     public static void main(String[] args) throws JMSException, IOException, NamingException {
         // Reading config file property from resources/application.properties and assigning to variable
-        PulsarConfig.initializeConfig("/application.properties");
+       PulsarConfig.initializeConfig("/application.properties");
 
         PulsarJMSClientProvider pulsarJMSClientProvider = new PulsarJMSClientProvider();
 
-        // TODO Once JNDI code is merged uncomment below code and test for JNDI
-/*        // JNDI
-        pulsarJMSClientProvider.executeJNDIExamples();*/
+        // JNDI
+        pulsarJMSClientProvider.executeJNDIExamples();
 
-        //JMS1
+       /* //JMS1
         pulsarJMSClientProvider.executeJMS1Examples();
 
         //JMS2
-        pulsarJMSClientProvider.executeJMS2Examples();
+        pulsarJMSClientProvider.executeJMS2Examples();*/
 
     }
 
@@ -41,11 +38,12 @@ public class PulsarJMSClientProvider {
     * JNDI examples
      */
     private void executeJNDIExamples() throws NamingException, JMSException {
-        JndiService jndiService = new JndiServiceImpl(SERVICE_URL);
+        JndiService jndiService = new JndiServiceImpl();
 
+        // Using jndi.properties
         jndiService.produceAndConsumeTextUsingJndiConfigFile();
-        jndiService.produceAndConsumeTextUsingEnvironment();
-        jndiService.produceAndConsumeTextUsingSystemProp();
+        //jndiService.produceAndConsumeTextUsingEnvironment();
+        //jndiService.produceAndConsumeTextUsingSystemProp();
     }
 
     /*
