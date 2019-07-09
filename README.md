@@ -1,110 +1,109 @@
-# pulsar-jms-provider-examples : This app is used to send and receiver message from pulsar using pulsar-jms-provider api
+## pulsar-jms-provider-examples
 
-Steps to setup java app to send and receiver messages to pulsar through pulsar-jms-provider api
+Embedding pulsar-jms-provider as maven dependency in this project.
 
-# 1. ======= Create a executable build =====
+Examples : Publish messages to pulsar broker and consume messages from pulsar broker
 
-Clone the repo
+## Build from sources
 
-Make sure you have maven installed
+ After a git clone of this repository, cd into the cloned sources and make sure you have maven installed to build this:
 
-Go to project directory and Run the maven build:
+ `mvn install`.
 
-    mvn install
+ In project_source_folder/target directory will be produced the selfcontained file with all dependencies and a running script.
 
-It will produce a JAR file and pulsar-jms-provider-examples-XXX-bin.zip in the target directory, and run all tests with the most recently-released build of Clojure.
+   `OR`
 
-OR
-Can also build using IDE
+ Can also build using IDE
 
+## Setup pulsar broker and App on ubuntu server
 
-# 2. ======= Steps to setup pulsar on ubuntu server ========
+ * Install Java8
 
-# Install Java8 and Pulsar, here steps to do on ubuntu server
+    Check if  Java8 installed
 
-*Install Java8 on ubuntu if not installed
+     `java -version`
 
-sudo apt-get update
+     Install Java8
 
-sudo add-apt-repository ppa:webupd8team/java
+      ```
+      sudo apt-get update
 
-sudo apt-get update
+      sudo add-apt-repository ppa:webupd8team/java
 
-sudo apt-get install oracle-java8-installer
+      sudo apt-get update
 
-*See the location where java installed or how many java's installed
+      sudo apt-get install oracle-java8-installer
 
-sudo update-alternatives --config java
+      ```
 
-Press Enter
+    Check/Change the location where java installed or how many java's installed
 
-*set JAVA_HOME environment variable to determine the Java
+      `sudo update-alternatives --config java`
 
-sudo nano /etc/environment
+    Set JAVA_HOME environment variable to determine the Java
 
-*Copy below path
+      `sudo nano /etc/environment`
 
-JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+    Copy below path
 
-*Save and exit the file CLTL+X then Y and press Enter
+      `JAVA_HOME="/usr/lib/jvm/java-8-oracle"`
 
-*Reload it using below command
+    Save and exit the file CLTL+X then Y and press Enter
 
-source /etc/environment
+    Reload it using below command
 
-echo $JAVA_HOME
+      `source /etc/environment`
 
-# Installing pulsar on Ubuntu as standalone if not installed
+    Verify the path
 
-*Go to the directory where to store pulsar
+      `echo $JAVA_HOME`
 
-wget https://archive.apache.org/dist/pulsar/pulsar-2.2.1/apache-pulsar-2.2.1-bin.tar.gz
+* Install Pulsar
 
-tar xvfz apache-pulsar-2.2.1-bin.tar.gz
+    Go to the directory where to store pulsar
 
-cd apache-pulsar-2.2.1
+     ```
+      wget https://archive.apache.org/dist/pulsar/pulsar-2.2.1/apache-pulsar-2.2.1-bin.tar.gz
 
-*Create a screen using below command
+      tar xvfz apache-pulsar-2.2.1-bin.tar.gz
 
-screen -R pulsar
+      cd apache-pulsar-2.2.1
 
-Press Enter
+      sudo apt-get install oracle-java8-installer
 
-*Run below command to start pulsar
+     ```
+    Create a screen using below command
 
-bin/pulsar standalone
+     `screen -R pulsar`
 
-# 3. ======= Steps to setup application =======
+    Press Enter
 
-# Deploy the executable build
+    Run below command to start pulsar
 
-Copy pulsar-jms-provider-examples-XXX-bin.zip from project target folder and paste to ubuntu server where pulsar is installed.
+     `bin/pulsar standalone`
 
-Unzip *bin.zip
+ * Deploy the executable build
 
-Go to unzipped folder and copy pulsar-jms-provider-examples-XXX.jar from lib to pulsar-jms-provider-examples-XXX
+    Copy pulsar-jms-provider-examples-XXX-bin.zip from project target folder and paste to ubuntu server
 
-    cp ./lib/pulsar-jms-provider-examples-XXX.jar .
+      ```
+        unzip pulsar-jms-provider-examples-XXX
+        cd pulsar-jms-provider-examples-XXX
+      ```
 
-  press Enter
+ * Config application.properties
 
-# Config application.properties by referring Configuration.md file in project pulsar-jms-provider-examples
+      `Refer Configuration.md file in project pulsar-jms-provider-examples`
 
-# Run the app on ubuntu
+ * Run the app on ubuntu
 
-Go to pulsar-jms-provider-examples-XXX if not
+   Go to pulsar-jms-provider-examples-XXX if not
 
-Modify below file for the app home and java opts
+      ```
+        chmod 777 startApp.sh
+        ./startApp.sh
 
-vi startApp.sh
+      ```
 
-    APP_HOME=/home/pulsar-jms-provider-examples-XXX
-
-Save and exit
-
-Change file permission
-
-    chmod 777 startApp.sh
-Run
-
-    ./startApp.sh
+ ---
