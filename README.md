@@ -2,7 +2,7 @@
 
 Embedding pulsar-jms-provider as maven dependency in this project.
 
-Examples : Publish messages to pulsar broker and consume messages from pulsar broker
+Examples in this app : Publish messages to pulsar broker and consume messages from pulsar broker
 
 ## Build from sources
 
@@ -70,7 +70,6 @@ Examples : Publish messages to pulsar broker and consume messages from pulsar br
 
       cd apache-pulsar-2.2.1
 
-      sudo apt-get install oracle-java8-installer
 
      ```
     Create a screen using below command
@@ -82,6 +81,10 @@ Examples : Publish messages to pulsar broker and consume messages from pulsar br
     Run below command to start pulsar
 
      `bin/pulsar standalone`
+
+    Come out from screen
+
+     `CTRL+A then D`
 
  * Deploy the executable build
 
